@@ -1,0 +1,427 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --breakpoint-xs: 480px;
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-card-border: hsl(var(--card-border));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-popover-border: hsl(var(--popover-border));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-primary-border: var(--primary-border);
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-secondary-border: var(--secondary-border);
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-muted-border: var(--muted-border);
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-accent-border: var(--accent-border);
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-destructive-border: var(--destructive-border);
+
+  --color-sidebar: hsl(var(--sidebar));
+  --color-sidebar-foreground: hsl(var(--sidebar-foreground));
+  --color-sidebar-border: hsl(var(--sidebar-border));
+  --color-sidebar-primary: hsl(var(--sidebar-primary));
+  --color-sidebar-primary-foreground: hsl(var(--sidebar-primary-foreground));
+  --color-sidebar-accent: hsl(var(--sidebar-accent));
+  --color-sidebar-accent-foreground: hsl(var(--sidebar-accent-foreground));
+
+  --font-sans: var(--app-font-sans);
+  --font-serif: var(--app-font-serif);
+  --font-mono: var(--app-font-mono);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   THEMES — control typography, radius, spacing philosophy
+   Each theme also supplies its default palette for convenience.
+   Color Schemes (below) can override the palette per-selection.
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ─── Terminal ───────────────────────────────────────────────── */
+/* Dense, technical. Mono typography, sharp corners, dark default */
+:root,
+[data-theme="terminal"] {
+  color-scheme: dark;
+
+  --background: 240 10% 4%;
+  --foreground: 0 0% 98%;
+
+  --border: 240 6% 15%;
+  --input: 240 6% 12%;
+  --ring: 160 100% 50%;
+
+  --card: 240 10% 6%;
+  --card-foreground: 0 0% 98%;
+  --card-border: 240 6% 15%;
+
+  --popover: 240 10% 6%;
+  --popover-foreground: 0 0% 98%;
+  --popover-border: 240 6% 15%;
+
+  --primary: 160 100% 50%;
+  --primary-foreground: 240 10% 4%;
+  --primary-border: 160 100% 50%;
+
+  --secondary: 240 6% 15%;
+  --secondary-foreground: 0 0% 98%;
+  --secondary-border: 240 6% 15%;
+
+  --muted: 240 6% 15%;
+  --muted-foreground: 240 5% 65%;
+  --muted-border: 240 6% 15%;
+
+  --accent: 240 6% 15%;
+  --accent-foreground: 0 0% 98%;
+  --accent-border: 240 6% 15%;
+
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 98%;
+  --destructive-border: 0 84% 60%;
+
+  --sidebar: 240 10% 4%;
+  --sidebar-foreground: 0 0% 98%;
+  --sidebar-border: 240 6% 15%;
+  --sidebar-primary: 160 100% 50%;
+  --sidebar-primary-foreground: 240 10% 4%;
+  --sidebar-accent: 240 6% 15%;
+  --sidebar-accent-foreground: 0 0% 98%;
+
+  /* Typography — controlled by theme, NOT overridden by color schemes */
+  --app-font-sans: 'Geist', 'Inter', sans-serif;
+  --app-font-mono: 'Space Mono', 'Menlo', monospace;
+  --app-font-serif: Georgia, serif;
+
+  --radius: 0.25rem;
+}
+
+/* ─── Soft ───────────────────────────────────────────────────── */
+/* Friendly, cozy. Rounded corners, light palette, generous spacing */
+[data-theme="soft"] {
+  color-scheme: light;
+
+  --background: 38 80% 96%;
+  --foreground: 0 12% 20%;
+
+  --border: 28 45% 87%;
+  --input: 0 0% 100%;
+  --ring: 275 40% 65%;
+
+  --card: 0 0% 100%;
+  --card-foreground: 0 12% 20%;
+  --card-border: 28 45% 87%;
+
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 12% 20%;
+  --popover-border: 28 45% 87%;
+
+  --primary: 275 45% 62%;
+  --primary-foreground: 0 0% 100%;
+  --primary-border: 275 45% 62%;
+
+  --secondary: 22 95% 88%;
+  --secondary-foreground: 0 12% 20%;
+  --secondary-border: 22 80% 82%;
+
+  --muted: 35 60% 95%;
+  --muted-foreground: 0 8% 50%;
+  --muted-border: 28 45% 87%;
+
+  --accent: 348 75% 90%;
+  --accent-foreground: 348 55% 38%;
+  --accent-border: 348 65% 84%;
+
+  --destructive: 0 65% 60%;
+  --destructive-foreground: 0 0% 100%;
+  --destructive-border: 0 65% 60%;
+
+  --sidebar: 38 80% 96%;
+  --sidebar-foreground: 0 12% 20%;
+  --sidebar-border: 28 45% 87%;
+  --sidebar-primary: 275 45% 62%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 35 60% 95%;
+  --sidebar-accent-foreground: 0 12% 20%;
+
+  --app-font-sans: 'Inter', 'Geist', sans-serif;
+  --app-font-mono: 'Menlo', 'Monaco', monospace;
+  --app-font-serif: Georgia, serif;
+
+  --radius: 1rem;
+}
+
+/* ─── Comfort ────────────────────────────────────────────────── */
+/* Calm, professional. Warm beige, balanced radius. */
+[data-theme="comfort"] {
+  color-scheme: light;
+
+  --background: 40 35% 93%;
+  --foreground: 22 20% 17%;
+
+  --border: 32 22% 79%;
+  --input: 38 45% 99%;
+  --ring: 28 58% 44%;
+
+  --card: 38 45% 99%;
+  --card-foreground: 22 20% 17%;
+  --card-border: 32 22% 79%;
+
+  --popover: 38 45% 99%;
+  --popover-foreground: 22 20% 17%;
+  --popover-border: 32 22% 79%;
+
+  --primary: 28 58% 44%;
+  --primary-foreground: 0 0% 100%;
+  --primary-border: 28 58% 44%;
+
+  --secondary: 37 28% 87%;
+  --secondary-foreground: 22 18% 30%;
+  --secondary-border: 32 22% 79%;
+
+  --muted: 37 22% 88%;
+  --muted-foreground: 22 10% 50%;
+  --muted-border: 32 22% 79%;
+
+  --accent: 28 40% 85%;
+  --accent-foreground: 22 25% 30%;
+  --accent-border: 28 30% 76%;
+
+  --destructive: 4 70% 54%;
+  --destructive-foreground: 0 0% 100%;
+  --destructive-border: 4 70% 54%;
+
+  --sidebar: 40 35% 93%;
+  --sidebar-foreground: 22 20% 17%;
+  --sidebar-border: 32 22% 79%;
+  --sidebar-primary: 28 58% 44%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 37 22% 88%;
+  --sidebar-accent-foreground: 22 20% 17%;
+
+  --app-font-sans: 'Inter', 'Geist', sans-serif;
+  --app-font-mono: 'Menlo', 'Monaco', monospace;
+  --app-font-serif: Georgia, serif;
+
+  --radius: 0.5rem;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   COLOR SCHEMES — palette overrides only.
+   Come after themes → same specificity wins by source order.
+   Do NOT set --radius, --app-font-*, or any layout variable here.
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ─── Ocean Blue ─────────────────────────────────────────────── */
+/* Deep navy, electric blue accents, dark */
+[data-scheme="ocean-blue"] {
+  color-scheme: dark;
+
+  --background: 221 39% 7%;
+  --foreground: 210 40% 96%;
+
+  --border: 221 25% 18%;
+  --input: 221 30% 13%;
+  --ring: 210 100% 60%;
+
+  --card: 221 35% 10%;
+  --card-foreground: 210 40% 96%;
+  --card-border: 221 25% 18%;
+
+  --popover: 221 35% 10%;
+  --popover-foreground: 210 40% 96%;
+  --popover-border: 221 25% 18%;
+
+  --primary: 210 100% 60%;
+  --primary-foreground: 221 39% 7%;
+  --primary-border: 210 100% 60%;
+
+  --secondary: 221 25% 16%;
+  --secondary-foreground: 210 35% 90%;
+  --secondary-border: 221 25% 22%;
+
+  --muted: 221 25% 14%;
+  --muted-foreground: 215 20% 58%;
+  --muted-border: 221 25% 18%;
+
+  --accent: 221 25% 16%;
+  --accent-foreground: 210 35% 90%;
+  --accent-border: 221 25% 22%;
+
+  --sidebar: 221 39% 7%;
+  --sidebar-foreground: 210 40% 96%;
+  --sidebar-border: 221 25% 18%;
+  --sidebar-primary: 210 100% 60%;
+  --sidebar-primary-foreground: 221 39% 7%;
+  --sidebar-accent: 221 25% 14%;
+  --sidebar-accent-foreground: 210 35% 90%;
+}
+
+/* ─── Peach Blossom ──────────────────────────────────────────── */
+/* Warm cream, coral/peach accents, light */
+[data-scheme="peach-blossom"] {
+  color-scheme: light;
+
+  --background: 20 60% 96%;
+  --foreground: 15 25% 18%;
+
+  --border: 20 35% 88%;
+  --input: 0 0% 100%;
+  --ring: 8 90% 65%;
+
+  --card: 0 0% 100%;
+  --card-foreground: 15 25% 18%;
+  --card-border: 20 35% 88%;
+
+  --popover: 0 0% 100%;
+  --popover-foreground: 15 25% 18%;
+  --popover-border: 20 35% 88%;
+
+  --primary: 8 90% 65%;
+  --primary-foreground: 0 0% 100%;
+  --primary-border: 8 90% 65%;
+
+  --secondary: 25 80% 90%;
+  --secondary-foreground: 15 25% 25%;
+  --secondary-border: 20 50% 83%;
+
+  --muted: 25 50% 94%;
+  --muted-foreground: 15 12% 50%;
+  --muted-border: 20 35% 88%;
+
+  --accent: 350 80% 92%;
+  --accent-foreground: 350 50% 35%;
+  --accent-border: 350 60% 85%;
+
+  --sidebar: 20 60% 96%;
+  --sidebar-foreground: 15 25% 18%;
+  --sidebar-border: 20 35% 88%;
+  --sidebar-primary: 8 90% 65%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 25 50% 94%;
+  --sidebar-accent-foreground: 15 25% 25%;
+}
+
+/* ─── Forest Green ───────────────────────────────────────────── */
+/* Sage & mint, forest green accents, light */
+[data-scheme="forest-green"] {
+  color-scheme: light;
+
+  --background: 138 28% 94%;
+  --foreground: 155 25% 14%;
+
+  --border: 138 20% 84%;
+  --input: 0 0% 100%;
+  --ring: 150 55% 38%;
+
+  --card: 0 0% 100%;
+  --card-foreground: 155 25% 14%;
+  --card-border: 138 20% 84%;
+
+  --popover: 0 0% 100%;
+  --popover-foreground: 155 25% 14%;
+  --popover-border: 138 20% 84%;
+
+  --primary: 150 55% 38%;
+  --primary-foreground: 0 0% 100%;
+  --primary-border: 150 55% 38%;
+
+  --secondary: 138 25% 88%;
+  --secondary-foreground: 155 20% 25%;
+  --secondary-border: 138 20% 80%;
+
+  --muted: 138 20% 91%;
+  --muted-foreground: 155 10% 48%;
+  --muted-border: 138 20% 84%;
+
+  --accent: 138 30% 87%;
+  --accent-foreground: 155 30% 25%;
+  --accent-border: 138 25% 80%;
+
+  --sidebar: 138 28% 94%;
+  --sidebar-foreground: 155 25% 14%;
+  --sidebar-border: 138 20% 84%;
+  --sidebar-primary: 150 55% 38%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 138 20% 91%;
+  --sidebar-accent-foreground: 155 25% 25%;
+}
+
+/* ─── Lavender Mist ──────────────────────────────────────────── */
+/* Cool lavender, purple accents, light */
+[data-scheme="lavender-mist"] {
+  color-scheme: light;
+
+  --background: 260 35% 95%;
+  --foreground: 260 30% 18%;
+
+  --border: 260 22% 87%;
+  --input: 0 0% 100%;
+  --ring: 260 55% 55%;
+
+  --card: 0 0% 100%;
+  --card-foreground: 260 30% 18%;
+  --card-border: 260 22% 87%;
+
+  --popover: 0 0% 100%;
+  --popover-foreground: 260 30% 18%;
+  --popover-border: 260 22% 87%;
+
+  --primary: 260 55% 55%;
+  --primary-foreground: 0 0% 100%;
+  --primary-border: 260 55% 55%;
+
+  --secondary: 260 25% 90%;
+  --secondary-foreground: 260 20% 30%;
+  --secondary-border: 260 22% 83%;
+
+  --muted: 260 22% 92%;
+  --muted-foreground: 260 10% 50%;
+  --muted-border: 260 22% 87%;
+
+  --accent: 280 50% 90%;
+  --accent-foreground: 280 40% 35%;
+  --accent-border: 280 35% 83%;
+
+  --sidebar: 260 35% 95%;
+  --sidebar-foreground: 260 30% 18%;
+  --sidebar-border: 260 22% 87%;
+  --sidebar-primary: 260 55% 55%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 260 22% 92%;
+  --sidebar-accent-foreground: 260 20% 30%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+}
